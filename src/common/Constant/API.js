@@ -30,6 +30,7 @@ export const DELETE_COMMNET_URL = (familyId, photoId, commentId) => `${TARGET_UR
 
 export const UPDATE_COMMNET_URL = (familyId, photoId, commentId) => `${TARGET_URL}/api/v1/families/${familyId}/photos/${photoId}/comments/${commentId}`
 
+
 /**------------------------ Family ----------------------------- */
 export const CREATE_FAMILY_URL = `${TARGET_URL}/api/v1/familes`
 
