@@ -14,7 +14,7 @@ export const DELETE_ALBUM_URL = (familyId, albumId) =>
 export const PUT_ALBUM_URL = (familyId, albumId) => 
 `${TARGET_URL}/api/v1/families/${familyId}/albums/${albumId}`
 
-export const CREATE_ALBUM_URL = (familyId, albumId) => 
+export const CREATE_ALBUM_URL = (familyId) => 
 `${TARGET_URL}/api/v1/families/${familyId}/albums`
 
 export const POST_LIKE_URL = (familyId, albumId, photoId) => 
@@ -34,13 +34,11 @@ export const UPDATE_COMMNET_URL = (familyId, photoId, commentId) => `${TARGET_UR
 /**------------------------ Family ----------------------------- */
 export const CREATE_FAMILY_URL = `${TARGET_URL}/api/v1/familes`
 
-export const REGISTER_FAMILY_URL = (familyId) => `${TARGET_URL}/api/v1/familes/${familyId}/register`
-
+export const POST_FAMILY_URL = (familyId) => `${TARGET_URL}/api/v1/familes/${familyId}/register`
 export const UPDATE_FAMILY_INFO_URL = (familyId) => `${TARGET_URL}/api/v1/familes/${familyId}/register`
-
 export const GET_FAMILY_URL = (familyId) => `${TARGET_URL}/api/v1/families/${familyId}`
 export const DELETE_FAMILY_URL = (familyId) => `${TARGET_URL}/api/v1/families/${familyId}`
-export const UPDATE_FAMILY_URL = (familyId) => `${TARGET_URL}/api/v1/families/${familyId}`
+export const PUT_FAMILY_URL = (familyId) => `${TARGET_URL}/api/v1/families/${familyId}`
 
 
 /**------------------------ Common ----------------------------- */
