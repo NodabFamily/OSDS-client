@@ -16,17 +16,51 @@ const StyledApp = styled.div`
   height: 100vh;
 `;
 
+// None for Browser Environment
+const StatusBarDom = styled.div`
+  width: 100%;
+  height: 3.5%;
+`;
+
+const ContentsDom = styled.div`
+  width: 100%;
+  height: 90.5%;
+  background: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+`;
+
+const NavDom = styled.div`
+  width: 100%;
+  height: 6%;
+  background: #ffffff;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 3;
+`;
+
 function App() {
   return (
     <>
       <StyledApp>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/archive" element={<Archive />} />
-          <Route path="/bookmark" element={<Bookmark />} />
-          <Route path="/setting" element={<Setting />} />
-        </Routes>
-        <Navbar />
+        <StatusBarDom />
+        <ContentsDom>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/archive" element={<Archive />} />
+              {/* 앨범 아이디로 중첩 라우터 */}
+            <Route path="/bookmark" element={<Bookmark />} />
+            <Route path="/setting" element={<Setting />} />
+          </Routes>
+        </ContentsDom>
+        <NavDom>
+          <Navbar />
+        </NavDom>
       </StyledApp>
     </>
   );
