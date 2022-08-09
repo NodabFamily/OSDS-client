@@ -72,7 +72,7 @@ const Input = styled.input`
 
   border: 0px;
 
-  width: 85.8%;
+  width: calc(100% - 2vh);
   height: 95%;
 `;
 
