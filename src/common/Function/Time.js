@@ -47,7 +47,7 @@ export const getIntervalToStringByCase = (otherSTRFtime) => {
     return otherSTRFtime.getFullYear() + "/" + otherSTRFtime.getMonth() + "/" + otherSTRFtime.getDate();
 };
 
-export const getIsNew = (otherSTRFtime) => {
+export const isGalleryNew = (otherSTRFtime) => {
     if (otherSTRFtime == null) return false;
 
     let now = new Date();
