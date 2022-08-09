@@ -1,11 +1,14 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
 import styled from "styled-components";
+import { Route, Routes } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Archive from "./pages/Archive";
 import Bookmark from "./pages/Bookmark";
 import Setting from "./pages/Setting";
+
+import ArchiveAlbum from "./pages/ArchiveAlbum";
+import ArchivePhoto from "./pages/ArchivePhoto";
 
 import Navbar from "./components/Navbar";
 
@@ -50,13 +53,15 @@ function App() {
       <StyledApp>
         <StatusBarDom />
         <ContentsDom>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/archive" element={<Archive />} />
-              {/* 앨범 아이디로 중첩 라우터 */}
-            <Route path="/bookmark" element={<Bookmark />} />
-            <Route path="/setting" element={<Setting />} />
-          </Routes>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/archive" element={<Archive />} />
+              <Route path="/archive/:album_id" element={<ArchiveAlbum />} />  
+              <Route path="/archive/:album_id/:photo_id" element={<ArchivePhoto />} />  
+              <Route path="/bookmark" element={<Bookmark />} />
+              <Route path="/setting" element={<Setting />} />
+              <Route element={<div>abc</div>}></Route>
+            </Routes>
         </ContentsDom>
         <NavDom>
           <Navbar />
