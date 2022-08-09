@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import {
-  getIsNew,
+  isGalleryNew,
   getIntervalToStringByCase,
   STRFTimeToDate,
 } from "../../common/Function/Time";
@@ -12,6 +12,7 @@ const GalleryForm = styled.div`
   height: 84px;
 
   margin-top: ${(props) => (props.idx === 0 ? "0" : "10px")};
+  margin-bottom: ${(props) => (props.isLast ? "20px" : "0")};
 
   border: 1px solid #eeeeee;
   border-radius: 5px;
@@ -180,7 +181,8 @@ const Divider = styled.div`
 
 const FeatureDom = styled.div`
   position: absolute;
-  right: -3px;
+  // (-3) + (-3) px 
+  right: -6px;
 
   display: flex;
   flex-direction: row-reverse;
@@ -202,11 +204,11 @@ const Gallery = (props) => {
   const updatedTime = getIntervalToStringByCase(
     STRFTimeToDate(galleryData.updated_at)
   );
-  const isNew = getIsNew(STRFTimeToDate(galleryData.create_at));
+  const isNew = isGalleryNew(STRFTimeToDate(galleryData.create_at));
 
   return (
     <>
-      <GalleryForm idx={props.idx}>
+      <GalleryForm idx={props.idx} isLast={props.isLast}>
         <TitleDom>
           <GalleryTitle>{galleryData.title}</GalleryTitle>
           <EditedTime>{updatedTime}</EditedTime>
