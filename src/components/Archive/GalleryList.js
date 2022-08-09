@@ -9,8 +9,6 @@ import "../../fonts/fonts.css";
 const MobileDom = styled.div`
   width: calc(100% - 48px);
   height: calc(100% - 20px);
-
-  margin-top: 20px;
 `;
 
 const ShowNone = styled.div`
@@ -87,7 +85,7 @@ const GalleryList = (props) => {
       <MobileDom>
         {searchedGalleries.length ? (
           searchedGalleries.map((gallery, idx) => (
-            <Gallery key={gallery.album_id} idx={idx} data={gallery} />
+            <Gallery key={gallery.album_id} isLast={searchedGalleries.length === idx + 1} idx={idx} data={gallery} />
           ))
         ) : (
           <ShowNone>
@@ -103,6 +101,9 @@ const GalleryList = (props) => {
             <NoneDiv>우리 가족의 추억을 쌓아보세요</NoneDiv>
           </ShowNone>
         )}
+
+        {/* Dummy Tag for margin-bottom of Last element */}
+        <div style={{width: "1px", height: "1px"}}></div>
       </MobileDom>
     </>
   );
