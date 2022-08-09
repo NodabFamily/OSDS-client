@@ -37,7 +37,8 @@ const SearchDom = styled.div`
 
 const GalleryDom = styled.div`
   width: 100%;
-  height: 89.5%;
+  height: calc(89.5% - 20px);
+  margin-top: 20px;
 
   display: flex;
   flex-direction: column;
@@ -45,6 +46,21 @@ const GalleryDom = styled.div`
 
   overflow-y: auto;
   overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    height: 20%;
+    background: rgba(110, 153, 114);
+
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(110, 153, 114, 0.5);
+  }
 `;
 
 const Title = styled.div`
@@ -55,7 +71,7 @@ const Title = styled.div`
 `;
 
 const Archive = () => {
-    const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState("");
 
   return (
     <>
@@ -63,10 +79,10 @@ const Archive = () => {
         <Title>사진첩</Title>
       </TitleDom>
       <SearchDom>
-        <SearchBar input={[searchInput, setSearchInput]}/>
+        <SearchBar input={[searchInput, setSearchInput]} />
       </SearchDom>
       <GalleryDom>
-        <GalleryList input={[searchInput, setSearchInput]}/>
+        <GalleryList input={[searchInput, setSearchInput]} />
       </GalleryDom>
     </>
   );
