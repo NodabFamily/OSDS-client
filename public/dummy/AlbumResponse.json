@@ -1,0 +1,18 @@
+{
+    "status": 200,
+    "success": true,
+    "message": "0번 family 4번 Album 정보 불러오기 성공",
+    "data": [
+        {
+            "id": 4,
+            "family_id": 0,
+            "title": "2019 상해 여행 ✈️",
+            "album_image": "https://user-images.githubusercontent.com/12531340/183311501-97a82c7d-0db9-4a89-9db4-ebdc1a586851.png",
+            "like_count": 22,
+            "comment_count": 8,
+            "created_at": "02/11/2019, 04:08:38",
+            "updated_at": "02/14/2019, 04:08:38",
+            "photo_count": 3
+        }
+    ]
+}
