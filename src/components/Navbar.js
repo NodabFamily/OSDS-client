@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const NavButton = styled.div`
   width: 25%;
@@ -31,21 +32,35 @@ const NavImg = styled.img`
 `;
 
 const Navbar = () => {
+  const location = useLocation(); 
   const [page, setPage] = useState("/");
 
   const navSrc = {
-    archive: page === "/archive" ? "img/navbar/archive-click.svg" : "img/navbar/archive.svg",
+    archive:
+      page.includes("archive")
+        ? "/img/navbar/archive-click.svg"
+        : "/img/navbar/archive.svg",
     bookmark:
-      page === "/bookmark" ? "img/navbar/bookmark-click.svg" : "img/navbar/bookmark.svg",
-    setting: page === "/setting" ? "img/navbar/setting-click.svg" : "img/navbar/setting.svg",
-    home: page === "/" ? "img/navbar/home-click.svg" : "img/navbar/home.svg",
+      page.includes("bookmark")
+        ? "/img/navbar/bookmark-click.svg"
+        : "/img/navbar/bookmark.svg",
+    setting:
+      page.includes("setting")
+        ? "/img/navbar/setting-click.svg"
+        : "/img/navbar/setting.svg",
+    home: page === "/" ? "/img/navbar/home-click.svg" : "/img/navbar/home.svg",
   };
 
   const navigate = useNavigate();
   const handleClick = (url) => {
     navigate(url);
-    setPage(url);
+    setPage(() => url);
   };
+
+  useEffect(() => {
+    setPage(() => location.pathname);
+  },);
+
   return (
     <>
       <NavButton onClick={() => handleClick("/archive")}>
