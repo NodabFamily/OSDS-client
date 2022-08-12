@@ -1,9 +1,9 @@
 {
-    "one": {
-        "status": 200,
-        "success": true,
-        "message": "0번 family 4번 Album 0번 Photo 불러오기 성공",
-        "data": {
+    "status": 200,
+    "success": true,
+    "message": "0번 family 4번 Album Photo 불러오기 성공",
+    "data": [
+        {
             "id": 0,
             "album_id": 4,
             "family_id": 0,
@@ -13,13 +13,8 @@
             "created_at": "02/14/2019, 04:08:38",
             "updated_at": "02/14/2019, 04:08:38",
             "my_like": true
-        }
-    },
-    "two": {
-        "status": 200,
-        "success": true,
-        "message": "0번 family 4번 Album 1번 Photo 불러오기 성공",
-        "data": {
+        },
+        {
             "id": 1,
             "album_id": 4,
             "family_id": 0,
@@ -29,13 +24,8 @@
             "created_at": "02/12/2019, 04:08:38",
             "updated_at": "02/12/2019, 04:08:38",
             "my_like": false
-        }
-    },
-    "three": {
-        "status": 200,
-        "success": true,
-        "message": "0번 family 4번 Album 2번 Photo 불러오기 성공",
-        "data": {
+        },
+        {
             "id": 2,
             "album_id": 4,
             "family_id": 0,
@@ -46,5 +36,5 @@
             "updated_at": "02/11/2019, 04:08:38",
             "my_like": true
         }
-    }
+    ]
 }
