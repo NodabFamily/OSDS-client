@@ -60,3 +60,9 @@ export const isGalleryNew = (otherSTRFtime) => {
 
     return false;
 };
+
+export const dateToString = (date) => {
+  if(date === null)
+    return " ";
+  return date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
+};
