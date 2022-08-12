@@ -19,15 +19,9 @@ const StyledApp = styled.div`
   height: 100vh;
 `;
 
-// None for Browser Environment
-const StatusBarDom = styled.div`
-  width: 100%;
-  height: 3.5%;
-`;
-
 const ContentsDom = styled.div`
   width: 100%;
-  height: 90.5%;
+  height: 94%;
   background: #ffffff;
 
   display: flex;
@@ -51,7 +45,6 @@ function App() {
   return (
     <>
       <StyledApp>
-        <StatusBarDom />
         <ContentsDom>
             <Routes>
               <Route path="/" element={<Home />} />
