@@ -1,6 +1,9 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React from "react";
 import styled from "styled-components";
+import axios from "axios";
+
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Gallery from "./Gallery";
 
@@ -39,12 +42,14 @@ const GalleryList = (props) => {
   const [galleries, setGalleries] = useState([]);
   const [searchedGalleries, setSearchedGalleries] = useState([]);
 
+  const navigate = useNavigate();
+
   const fetching = () => {
-    fetch("dummy/GalleryData.json")
-    .then((res) => res.json())
-    .then((data) => {
-        setGalleries((e) => e = data);
-    });
+    axios("/dummy/GalleryResponse.json")
+      .then((res) => res.data)
+      .then((data) => {
+        setGalleries((cur) => (cur = data.data));
+      });
   };
 
   const isSearchTagInList = (gallery, searchWord) => {
@@ -56,27 +61,36 @@ const GalleryList = (props) => {
       }
     }
 
-    if(searched.length)
-        return true;
+    if (searched.length) return true;
 
     return false;
   };
 
+  const navigateToAlbum = (album_id) => {
+    navigate("/archive/" + album_id);
+    console.log("/archive/" + album_id);
+  };
+
   useEffect(() => {
     fetching();
-    setSearchedGalleries((e) => e = galleries);
+    setSearchedGalleries((cur) => (cur = galleries));
+    console.log(galleries);
   }, []);
 
   useEffect(() => {
     if (props.input[0] !== "") {
-
-      setSearchedGalleries((e) => e =  
-        galleries.filter((gallery) => gallery.title.includes(props.input[0]))
-        .concat(galleries.filter((gallery) => isSearchTagInList(gallery, props.input[0])))
+      setSearchedGalleries(
+        (cur) =>
+          (cur = galleries
+            .filter((gallery) => gallery.title.includes(props.input[0]))
+            .concat(
+              galleries.filter((gallery) =>
+                isSearchTagInList(gallery, props.input[0])
+              )
+            ))
       );
-
     } else {
-      setSearchedGalleries((e) => e = galleries);
+      setSearchedGalleries((e) => (e = galleries));
     }
   }, [props.input[0], galleries]);
 
@@ -85,7 +99,13 @@ const GalleryList = (props) => {
       <MobileDom>
         {searchedGalleries.length ? (
           searchedGalleries.map((gallery, idx) => (
-            <Gallery key={gallery.album_id} isLast={searchedGalleries.length === idx + 1} idx={idx} data={gallery} />
+            <Gallery
+              key={gallery.album_id}
+              isLast={searchedGalleries.length === idx + 1}
+              idx={idx}
+              data={gallery}
+              onClick={() => navigateToAlbum(gallery.album_id)}
+            />
           ))
         ) : (
           <ShowNone>
@@ -103,7 +123,7 @@ const GalleryList = (props) => {
         )}
 
         {/* Dummy Tag for margin-bottom of Last element */}
-        <div style={{width: "1px", height: "1px"}}></div>
+        <div style={{ width: "1px", height: "1px" }}></div>
       </MobileDom>
     </>
   );
