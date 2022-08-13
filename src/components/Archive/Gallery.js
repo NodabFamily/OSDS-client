@@ -30,6 +30,8 @@ const GalleryForm = styled.div`
 
   // For <TagDom/>
   position: relative;
+
+  cursor: pointer;
 `;
 
 const TitleDom = styled.div`
@@ -208,7 +210,7 @@ const Gallery = (props) => {
 
   return (
     <>
-      <GalleryForm idx={props.idx} isLast={props.isLast}>
+      <GalleryForm idx={props.idx} isLast={props.isLast} onClick={props.onClick}>
         <TitleDom>
           <GalleryTitle>{galleryData.title}</GalleryTitle>
           <EditedTime>{updatedTime}</EditedTime>
@@ -223,16 +225,16 @@ const Gallery = (props) => {
           <BackgroundImg src={galleryData.album_image} />
 
           <FeatureDom>
-            {isNew ? <NewImg src="img/archive/new.svg" /> : null}
+            {isNew ? <NewImg src="/img/archive/new.svg" /> : null}
             {galleryData.is_bookmarked ? (
-              <StarImg src="img/archive/star.svg" />
+              <StarImg src="/img/archive/star.svg" />
             ) : null}
           </FeatureDom>
           <ReactionDom>
-            <LikeImg src="img/archive/like.svg" />
+            <LikeImg src="/img/archive/like.svg" />
             <LikeCount>{galleryData.like_num}</LikeCount>
             <Divider />
-            <CommentImg src="img/archive/comment.svg" />
+            <CommentImg src="/img/archive/comment.svg" />
             <CommentCount>{galleryData.comment_num}</CommentCount>
           </ReactionDom>
         </ImageDom>

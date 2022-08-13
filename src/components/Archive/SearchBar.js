@@ -81,11 +81,11 @@ const SearchBar = (props) => {
     <>
       <MobileDom>
         <FilterDom>
-          <FilterImg src="img/archive/expand.svg"></FilterImg>
+          <FilterImg src="/img/archive/expand.svg"></FilterImg>
           <FilterTitle>최신 순</FilterTitle>
         </FilterDom>
         <InputDom>
-          <InputImg src="img/archive/search.svg"></InputImg>
+          <InputImg src="/img/archive/search.svg"></InputImg>
           <Input
             type="text"
             placeholder="제목 또는 해시태그로 검색하세요"
