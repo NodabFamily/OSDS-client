@@ -3,7 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 
 import { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { dateToString, STRFTimeToDate } from "../common/Function/Time";
 
@@ -258,12 +258,13 @@ const ArchiveAlbum = () => {
 
   const ref = useRef();
   const navigate = useNavigate();
+  const params = useParams();
 
   const fetching = () => {
     axios("/dummy/GalleryResponse.json")
       .then((res) => res.data)
       .then((data) => {
-        setAlbumData((cur) => (cur = data.data[4]));
+        setAlbumData((cur) => (cur = data.data[params.album_id]));
       });
 
     axios("/dummy/PhotoResponse.json")
