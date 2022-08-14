@@ -26,6 +26,7 @@ const ContentsDom = styled.div`
 
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const NavDom = styled.div`
