@@ -6,36 +6,13 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Gallery from "./Gallery";
+import ShowNone from "../ShowNone";
 
 import "../../fonts/fonts.css";
 
 const MobileDom = styled.div`
   width: calc(100% - 48px);
   height: calc(100% - 20px);
-`;
-
-const ShowNone = styled.div`
-  width: 100%;
-`;
-
-const NoneImg = styled.img`
-  width: 3.75vh;
-  height: 3.75vh;
-`;
-
-const NoneSpan = styled.span`
-  font-family: "Spoqa Han Sans Medium";
-  font-size: 1.5vh;
-  color: #7b7b7b;
-
-  margin-left: 12px;
-  margin-top: 1.4vh;
-`;
-
-const NoneDiv = styled.div`
-  font-family: "Spoqa Han Sans Medium";
-  font-size: 3vh;
-  margin-top: 18px;
 `;
 
 const GalleryList = (props) => {
@@ -108,18 +85,11 @@ const GalleryList = (props) => {
             />
           ))
         ) : (
-          <ShowNone>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-              }}
-            >
-              <NoneImg src="img/archive/fireworks.png" alt="fireworks" />
-              <NoneSpan>기억에 남는 사진이 있으신가요?</NoneSpan>
-            </div>
-            <NoneDiv>우리 가족의 추억을 쌓아보세요</NoneDiv>
-          </ShowNone>
+          <ShowNone
+            img="/img/archive/fireworks.png"
+            span="기억에 남는 사진이 있으신가요?"
+            div="우리 가족의 추억을 쌓아보세요"
+          />
         )}
 
         {/* Dummy Tag for margin-bottom of Last element */}

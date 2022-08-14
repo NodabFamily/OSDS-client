@@ -1,9 +1,12 @@
 import React from "react";
-
 import styled from "styled-components";
+
+import { useNavigate } from "react-router-dom";
 
 const PhotoDom = styled.div`
   width: calc(100% - 48px);
+
+  cursor: pointer;
 `;
 
 const ReactionDom = styled.div`
@@ -66,11 +69,17 @@ const Divider = styled.div`
 `;
 
 const Photo = (props) => {
+    const navigate = useNavigate();
+
   const photoData = props.photo;
+
+  const navigateToPhoto = () => {
+    navigate("/archive/" + photoData.album_id + "/" + photoData.id);
+  };
 
   return (
     <>
-      <PhotoDom>
+      <PhotoDom onClick={navigateToPhoto}>
         <PhotoImg src={photoData.photo_image} />
 
         <ReactionDom isLast={props.isLast}>

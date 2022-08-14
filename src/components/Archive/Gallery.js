@@ -226,7 +226,7 @@ const Gallery = (props) => {
 
           <FeatureDom>
             {isNew ? <NewImg src="/img/archive/new.svg" /> : null}
-            {galleryData.is_bookmarked ? (
+            {galleryData.is_stared ? (
               <StarImg src="/img/archive/star.svg" />
             ) : null}
           </FeatureDom>

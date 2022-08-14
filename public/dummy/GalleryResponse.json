@@ -15,7 +15,7 @@
             ],
             "comment_num": 93,
             "like_num": 102,
-            "is_bookmarked": true
+            "is_stared": true
         },
         {
             "album_id": 1,
@@ -26,7 +26,7 @@
             "tags": [],
             "comment_num": 1,
             "like_num": 2,
-            "is_bookmarked": false
+            "is_stared": false
         },
         {
             "album_id": 2,
@@ -39,7 +39,7 @@
             ],
             "comment_num": 6,
             "like_num": 36,
-            "is_bookmarked": true
+            "is_stared": true
         },
         {
             "album_id": 3,
@@ -52,7 +52,7 @@
             ],
             "comment_num": 17,
             "like_num": 29,
-            "is_bookmarked": true
+            "is_stared": true
         },
         {
             "album_id": 4,
@@ -67,7 +67,7 @@
             ],
             "comment_num": 22,
             "like_num": 8,
-            "is_bookmarked": false
+            "is_stared": false
         },
         {
             "album_id": 5,
@@ -81,7 +81,7 @@
             ],
             "comment_num": 93,
             "like_num": 102,
-            "is_bookmarked": true
+            "is_stared": true
         },
         {
             "album_id": 6,
@@ -92,7 +92,7 @@
             "tags": [],
             "comment_num": 1,
             "like_num": 2,
-            "is_bookmarked": false
+            "is_stared": false
         },
         {
             "album_id": 7,
@@ -105,7 +105,7 @@
             ],
             "comment_num": 6,
             "like_num": 36,
-            "is_bookmarked": true
+            "is_stared": true
         },
         {
             "album_id": 8,
@@ -118,7 +118,7 @@
             ],
             "comment_num": 17,
             "like_num": 29,
-            "is_bookmarked": true
+            "is_stared": true
         },
         {
             "album_id": 9,
@@ -133,7 +133,7 @@
             ],
             "comment_num": 22,
             "like_num": 8,
-            "is_bookmarked": false
+            "is_stared": false
         }
     ]
 }
