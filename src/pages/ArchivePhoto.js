@@ -9,6 +9,7 @@ import { dateToString, STRFTimeToDate } from "../common/Function/Time";
 
 import Comment from "../components/Archive/Comment";
 import ShowNone from "../components/ShowNone";
+import Modal from "../components/Modal";
 
 const AlbumDom = styled.div`
   width: 100%;
@@ -180,8 +181,12 @@ const ArchivePhoto = () => {
   const [albumData, setAlbumData] = useState([]);
   const [photoData, setPhotoData] = useState([]);
   const [commentsData, setCommentsData] = useState([]);
+  const [familyData, setFamilyData] = useState([]);
 
   const [inputComment, setInputComment] = useState("");
+
+  const [isModal, setIsModal] = useState(false);
+  const [clickedMember, setClickedMember] = useState({});
 
   const params = useParams();
   const navigate = useNavigate();
@@ -204,14 +209,47 @@ const ArchivePhoto = () => {
       .then((data) => {
         setCommentsData((cur) => (cur = data[params.photo_id].data));
       });
+    axios("/dummy/FamilyResponse.json")
+      .then((res) => res.data)
+      .then((data) => {
+        setFamilyData((cur) => (cur = data.data.members));
+      });
   };
 
   useEffect(() => {
     fetching();
   }, []);
 
+  const onClick = (member) => {
+    setClickedMember((cur) => (cur = member));
+    setIsModal((cur) => (cur = true));
+    console.log(albumData);
+    console.log(photoData);
+    console.log(commentsData);
+    console.log(familyData);
+    console.log(clickedMember);
+    console.log(getUserInfoById(photoData.user_id));
+  };
+
+  const getUserInfoById = (userId) => {
+    if (!familyData.length) {
+      const temp = {
+        id: 0,
+        name: "",
+        nickname: "",
+        bio: "",
+        profile: "",
+      };
+      return temp;
+    }
+    return familyData.find((user) => user.id === userId);
+  };
+
   return (
     <>
+      {isModal ? (
+        <Modal state={[isModal, setIsModal]} member={clickedMember} />
+      ) : null}
       <AlbumDom>
         <BackButton
           src="/img/archive/back_black.svg"
@@ -237,10 +275,14 @@ const ArchivePhoto = () => {
         <PhotoDom>
           <AuthorDom>
             <UserImg
+              src={getUserInfoById(photoData.user_id).profile}
               style={{
                 height: "3.75vh",
                 width: "3.75vh",
                 margin: "0",
+              }}
+              onClick={() => {
+                onClick(getUserInfoById(photoData.user_id));
               }}
             />
             <div
@@ -250,7 +292,9 @@ const ArchivePhoto = () => {
                 marginLeft: "10px",
               }}
             >
-              <PhotoInfo>{photoData.user_id}</PhotoInfo>
+              <PhotoInfo>
+                {getUserInfoById(photoData.user_id).nickname}
+              </PhotoInfo>
               <PhotoInfo
                 style={{
                   fontFamily: "Spoqa Han Sans Regular",
@@ -301,7 +345,7 @@ const ArchivePhoto = () => {
                 fontFamily: "Spoqa Han Sans Medium",
                 fontSize: "12px",
                 marginLeft: "10px",
-                marginTop: "8px"
+                marginTop: "8px",
               }}
             >
               댓글 {commentsData.length}개
@@ -312,7 +356,18 @@ const ArchivePhoto = () => {
         <CommentViewDom>
           {commentsData.length ? (
             commentsData.map((comment, idx) => (
-              <Comment key={comment.id} comment={comment} idx={idx} />
+              <Comment 
+                key={comment.id}
+                idx={idx}
+                data={{
+                  comment: comment
+                }}
+                state={{
+                  modal: [isModal, setIsModal],
+                  clicked: [clickedMember, setClickedMember],
+                  family: [familyData, setFamilyData]
+                }}
+              />
             ))
           ) : (
             <ShowNone
