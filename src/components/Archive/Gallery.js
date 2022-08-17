@@ -108,10 +108,8 @@ const Overlay = styled.div`
 
 const BackgroundImg = styled.img`
   position: absolute;
-
   object-fit: cover;
-  // Issue : fail to maintain ratio of picture
-  // -> Find keyword 'object-fit' in CSS
+  
   --widthA: calc(100vw - 48px);
   --widthB: calc(var(--widthA) * 45 / 100);
   width: calc(var(--widthB));

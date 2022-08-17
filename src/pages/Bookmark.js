@@ -138,45 +138,93 @@ const Bookmark = () => {
   const [bookmarks, setBookmarks] = useState([]);
   const [reactions, setReactions] = useState({ comment: 0, like: 0 });
 
+  const [loading, setLoading] = useState(true);
+  const [loading2, setLoading2] = useState(true);
+  const [loading3, setLoading3] = useState(true);
+
   useEffect(() => {
-    const fetching = async () => {
-      await axios("/dummy/GalleryResponse.json")
+    function resolveAfter2Seconds2() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          const filterBookmarks = () => {
+            let photos = [];
+            albumIds.forEach((id) => {
+              photosRes[id].data.forEach((photo) => {
+                if (photo.is_bookmarked) {
+                  photos.push(photo);
+                  setReactions({
+                    comment: (reactions.comment += photo.comment_count),
+                    like: (reactions.like += photo.like_count),
+                  });
+                }
+              });
+            });
+            console.log(photos);
+            setBookmarks(photos);
+          };
+          filterBookmarks();
+          resolve("2resolved");
+        }, 2000);
+      });
+    }
+
+    function resolveAfter2Seconds1() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          const filterAlbumIds = () => {
+            let ids = [];
+            albumData.forEach((album) => {
+              ids.push(album.album_id);
+            });
+            setAlbumIds((cur) => (cur = ids));
+            setLoading2(false);
+          };
+          filterAlbumIds();
+          resolve("1resolved");
+        }, 2000);
+      });
+    }
+
+    async function asyncCall() {
+      console.log("calling");
+      const result1 = await resolveAfter2Seconds1();
+      const result2 = await resolveAfter2Seconds2();
+      console.log(result1);
+      console.log(result2);
+      // expected output: "resolved"
+    }
+
+    asyncCall();
+  }, [loading]);
+
+  useEffect(() => {
+    const fetching = () => {
+      axios("/dummy/GalleryResponse.json")
         .then((res) => res.data)
         .then((data) => {
-          setAlbumData((cur) => (cur = data.data));
+          if (data.success) {
+            setAlbumData((cur) => (cur = data.data));
+          }
         });
 
-      await axios("/dummy/BookmarkResponse.json")
+      axios("/dummy/BookmarkResponse.json")
         .then((res) => res.data)
         .then((data) => {
           setPhotosRes((cur) => (cur = data));
+          setLoading(false);
         });
     };
+
     fetching();
+    setLoading(false);
   }, []);
 
-  useEffect(() => {
-    let ids = [];
-    let photos = [];
-
-    albumData.forEach((album) => {
-      ids.push(album.album_id);
-    });
-    setAlbumIds((cur) => (cur = ids));
-
-    albumIds.forEach((id) => {
-      photosRes[id].data.forEach((photo) => {
-        if (photo.is_bookmarked) {
-          photos.push(photo);
-          setReactions({
-            comment: reactions.comment += photo.comment_count,
-            like : reactions.like += photo.like_count
-          });
-        }
-      });
-    });
-    setBookmarks((cur) => (cur = photos));
-  }, [photosRes]);
+  const onClick = () => {
+    console.log(albumData);
+    console.log(photosRes);
+    console.log(albumIds);
+    console.log(bookmarks);
+  };
 
   return (
     <>
@@ -185,12 +233,11 @@ const Bookmark = () => {
       </TitleDom>
 
       <InfoDom>
-        <FilterDom>
+        <FilterDom onClick={onClick}>
           <FilterImg src="/img/archive/expand.svg"></FilterImg>
           <FilterTitle>최신 순</FilterTitle>
         </FilterDom>
         <ReactionDom>
-          {/* 재사용 코드로 리팩토링 할 것. */}
           <ReactionImg src="/img/archive/like_black.svg" />
           <ReactionCount>{reactions.like}</ReactionCount>
           <Divider />

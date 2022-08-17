@@ -59,7 +59,7 @@ const Navbar = () => {
 
   useEffect(() => {
     setPage(() => location.pathname);
-  },);
+  }, []);
 
   return (
     <>

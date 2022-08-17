@@ -8,6 +8,8 @@ const NoneDom = styled.div`
 const NoneImg = styled.img`
   width: 3.75vh;
   height: 3.75vh;
+
+  object-fit: contain;
 `;
 
 const NoneSpan = styled.span`
