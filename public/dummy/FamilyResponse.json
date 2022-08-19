@@ -41,20 +41,6 @@
                 "nickname": "아들",
                 "bio": "이의제기",
                 "profile" : "https://user-images.githubusercontent.com/12531340/184587966-d543b0ba-98d2-4e55-912d-631ff6b799fb.png"
-            },
-            {
-                "id" : 5,
-                "name": "이의제1",
-                "nickname": "할아버지",
-                "bio": "test",
-                "profile" : "https://user-images.githubusercontent.com/12531340/184587966-d543b0ba-98d2-4e55-912d-631ff6b799fb.png"
-            },
-            {
-                "id" : 6,
-                "name": "이위제",
-                "nickname": "할머니",
-                "bio": "text",
-                "profile" : "https://user-images.githubusercontent.com/12531340/184587966-d543b0ba-98d2-4e55-912d-631ff6b799fb.png"
             }
         ]
     }
