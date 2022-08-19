@@ -167,7 +167,7 @@ const LoginLanding = () => {
             backgroundColor: "#6E9972",
             color: "#FFFFFF"
           }}
-          onClick={() => navigate("/auth/signup/1")}>{"회원가입하고 시작하기"}</SignUpButton>
+          onClick={() => navigate("/auth/signup")}>{"회원가입하고 시작하기"}</SignUpButton>
         <SignUpButton 
           style={{
             fontFamily: "Spoqa Han Sans Regular"

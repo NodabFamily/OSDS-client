@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import ShowNone from "../../components/ShowNone";
 
 import { getCookie, setCookie } from "../../common/Function/Cookie";
-import Photo from "../../components/Archive/Photo";
 
 const TitleDom = styled.div`
   width: 100vw;
