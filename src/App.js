@@ -11,6 +11,7 @@ import Setting from "./pages/Setting";
 import Login from "./pages/auth/Login";
 import LoginLanding from "./pages/auth/LoginLanding";
 import SignUp from "./pages/auth/SignUp";
+import Invitation from "./pages/auth/Invitation";
 
 import ArchiveAlbum from "./pages/ArchiveAlbum";
 import ArchivePhoto from "./pages/ArchivePhoto";
@@ -85,8 +86,9 @@ function App() {
           <Routes>
             <Route path="/auth" element={<LoginLanding />} />
             <Route path="/auth/login" element={<Login />} />
-            <Route path="/auth/signup/:step" element={<SignUp />} />
-          </Routes>
+            <Route path="/auth/signup" element={<SignUp />} />
+            <Route path="/auth/invitation/:family_id" element={<Invitation />} />
+          </Routes> 
         )}
       </StyledApp>
     </>
