@@ -223,12 +223,6 @@ const ArchivePhoto = () => {
   const onClick = (member) => {
     setClickedMember((cur) => (cur = member));
     setIsModal((cur) => (cur = true));
-    console.log(albumData);
-    console.log(photoData);
-    console.log(commentsData);
-    console.log(familyData);
-    console.log(clickedMember);
-    console.log(getUserInfoById(photoData.user_id));
   };
 
   const getUserInfoById = (userId) => {
