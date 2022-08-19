@@ -270,7 +270,7 @@ const ArchiveAlbum = () => {
     axios("/dummy/PhotoResponse.json")
       .then((res) => res.data)
       .then((data) => {
-        setPhotos((cur) => (cur = data.data));
+        setPhotos((cur) => (cur = data[params.album_id].data));
       });
   };
 
