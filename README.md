@@ -1,10 +1,11 @@
 # OSDS-client
 
-
+`Online space for family`
 
 ## 👨‍👩‍👧‍👦 Participants 👨‍👩‍👧‍👦
 | name | 역할   |
 |-------|----------|
+| [unanchoi](https://github.com/unanchoi)| Develop / Review / Deploy |
 | [euije](https://github.com/euije)| Develop |
 
 
@@ -33,7 +34,7 @@ npm run start
 | chore | 기본 세팅 및 settings.py 관련, 패키지 관리  | 
 
 ## Deploy
-|*|status|
+|Site|Status|
 |-|-|
 |[main](https://mrmr-likelion.netlify.app/)|[![Netlify Status](https://api.netlify.com/api/v1/badges/117d3837-aeb8-4618-8713-0b55db770d50/deploy-status)](https://app.netlify.com/sites/mrmr-likelion/deploys)|
 |[github-page](http://www.osds-client.kro.kr/)|![example workflow](https://img.shields.io/badge/Github-success-%236E9972)|
