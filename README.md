@@ -30,7 +30,7 @@
   - `styled-components(CSS-in-JS)`라이브러리를 통해 semantic한 Dom구조를 작성
   - `flex-box`를 통해 반응형 컴포넌트 설계
 - 소통
-  - 상세한 Pull-Request (#5, #6 등) 작성을 통해 개발이 어느 정도 진행 되었는지 공유
+  - 상세한 Pull-Request ([#5](https://github.com/NodabFamily/OSDS-client/pull/5), [#6](https://github.com/NodabFamily/OSDS-client/pull/6) 등) 작성을 통해 개발이 어느 정도 진행 되었는지 공유
 
 ### Lesson & Learn
 
